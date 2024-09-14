@@ -110,6 +110,7 @@ class LotteriesTask extends Task {
   drawLotteryHistory = {};
   lotteryCount = 0;
   luckyValueProbability = 0;
+  lotteryName = ''; // 奖品名称
 
   async run(growthTask, dipLuckyTask) {
     const growth = this.juejin.growth();
@@ -123,6 +124,7 @@ class LotteriesTask extends Task {
     let freeCount = this.freeCount;
     while (freeCount > 0) {
       const result = await growth.drawLottery();
+      this.lotteryName = result.lottery_name;
       this.drawLotteryHistory[result.lottery_id] = (this.drawLotteryHistory[result.lottery_id] || 0) + 1;
       dipLuckyTask.luckyValue = result.total_lucky_value;
       freeCount--;
@@ -311,7 +313,8 @@ ${
 预测All In矿石累计幸运值比率 ${(this.lotteriesTask.luckyValueProbability * 100).toFixed(2) + "%"}
 抽奖总次数 ${this.lotteriesTask.lotteryCount}
 免费抽奖次数 ${this.lotteriesTask.freeCount}
-${this.lotteriesTask.lotteryCount > 0 ? "==============\n" + drawLotteryHistory + "\n==============" : ""}
+恭喜抽中 ${this.lotteriesTask.lotteryName}
+//${this.lotteriesTask.lotteryCount > 0 ? "==============\n" + drawLotteryHistory + "\n==============" : ""}
 `.trim();
   }
 }
