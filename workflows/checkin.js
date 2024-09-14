@@ -283,14 +283,12 @@ class CheckIn {
 
     return `
 掘友: ${this.username}
-
 ${
   {
     0: "签到失败",
     1: `签到成功 +${this.growthTask.incrPoint} 矿石`,
     2: "今日已完成签到"
   }[this.growthTask.todayStatus]
-  
   // ${
   //   {
   //     "-1": "沾喜气已停用",
@@ -308,24 +306,14 @@ ${
   // }
 }
 连续签到天数 ${this.growthTask.contCount}
-
 累计签到天数 ${this.growthTask.sumCount}
-
 当前矿石数 ${this.growthTask.sumPoint}
-
 当前未消除Bug数量 ${this.bugfixTask.userOwnBug}
-
 当前幸运值 ${this.dipLuckyTask.luckyValue}/6000
-
 预测All In矿石累计幸运值比率 ${(this.lotteriesTask.luckyValueProbability * 100).toFixed(2) + "%"}
-
 抽奖总次数 ${this.lotteriesTask.lotteryCount}
-
 免费抽奖次数 ${this.lotteriesTask.freeCount}
-
-恭喜抽中 ${this.lotteriesTask.lotteryName}
-
-${this.lotteriesTask.lotteryCount > 0 ? "恭喜抽中 " + ${this.lotteriesTask.lotteryName} + "" : ""}
+${this.lotteriesTask.lotteryCount > 0 ? "==============\n恭喜抽中 " + ${this.lotteriesTask.lotteryName} + "\n==============" : ""}
 `.trim();
   }
 }
