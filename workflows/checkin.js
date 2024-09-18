@@ -280,6 +280,12 @@ class CheckIn {
         return `${lottery_id}: ${count}`;
       })
       .join("\n");
+    let lotteryResult = "";
+    if (this.lotteriesTask && this.lotteriesTask.lotteryCount > 0 && this.lotteriesTask.lotteryName) {
+        lotteryResult = `==============
+    恭喜抽中 ${this.lotteriesTask.lotteryName} 
+    ==============`;
+    }
 
     return `
 掘友: ${this.username}
@@ -313,7 +319,7 @@ ${
 预测All In矿石累计幸运值比率 ${(this.lotteriesTask.luckyValueProbability * 100).toFixed(2) + "%"}
 抽奖总次数 ${this.lotteriesTask.lotteryCount}
 免费抽奖次数 ${this.lotteriesTask.freeCount}
-${this.lotteriesTask.lotteryCount > 0 ? '==============\n恭喜抽中 ${this.lotteriesTask.lotteryName} \n==============' : ""}
+${lotteryResult}
 `.trim();
   }
 }
