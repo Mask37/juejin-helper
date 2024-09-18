@@ -283,8 +283,8 @@ class CheckIn {
     let lotteryResult = "";
     if (this.lotteriesTask && this.lotteriesTask.lotteryCount > 0 && this.lotteriesTask.lotteryName) {
         lotteryResult = `==============
-    恭喜抽中 ${this.lotteriesTask.lotteryName} 
-    ==============`;
+恭喜抽中 ${this.lotteriesTask.lotteryName} 
+==============`;
     }
 
     return `
