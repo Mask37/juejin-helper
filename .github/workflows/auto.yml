@@ -28,9 +28,20 @@ jobs:
       - uses: actions/setup-node@v2
       - name: Run Project
         run: |
-          cd workflows
-          yarn
-          yarn checkin
+          attempt=0
+          max_attempts=3
+           # 半小时的秒数
+          delay_seconds=1800
+          until [ $attempt -ge $max_attempts ]
+          do
+            cd workflows
+            yarn
+            yarn checkin && break
+            attempt=$((attempt + 1))
+            if [ $attempt -lt $max_attempts ]; then
+              sleep $delay_seconds
+            fi
+          done
 
 #  SeaGold:
 #    needs: CheckIn
