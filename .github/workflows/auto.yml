@@ -52,5 +52,5 @@ jobs:
 #      - name: Run Project
 #        run: |
 #          cd workflows
-#          yarn
-#          yarn seagold
+#          npm
+#          npm seagold
